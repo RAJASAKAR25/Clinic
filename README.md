@@ -1,4 +1,4 @@
-# 🦷 SmileCare Dental Clinic — Full-Stack Website
+# 🦷 Sekhar Dental Clinic — Full-Stack Website
 
 A production-ready dental clinic website built with **React + Vite** (frontend) and **Node.js + Express** (backend).
 
