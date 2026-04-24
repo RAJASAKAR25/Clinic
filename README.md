@@ -219,4 +219,4 @@ VITE_API_URL=/api
 
 ---
 
-*Built with ❤️ for SmileCare Dental Clinic, Gomti Nagar, Lucknow*
+*Built with ❤️ for Sekhar Dental Clinic*
