@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from 'lucide-react';
 import { CLINIC, NAV_LINKS, SERVICE_LIST } from '../utils/constants.js';
+import config from '../config.js';
 import clinicLogo from '../../assets/Clinic_Logo.svg';
 
 const Footer = () => {
@@ -35,12 +36,14 @@ const Footer = () => {
             {/* Social icons */}
             <div className="flex items-center gap-3">
               {[
-                { Icon: Facebook,  href: CLINIC.social?.facebook || 'https://www.facebook.com/share/17K95FucXG/', label: 'Facebook' },
-                { Icon: Instagram, href: CLINIC.social?.instagram || 'https://www.instagram.com/sekharsdental?igsh=eW5zMTU3NTdhMTlp', label: 'Instagram' },
-              ].map(({ Icon, href, label }) => (
+                { Icon: Facebook,  href: config.social.facebook, label: 'Facebook' },
+                { Icon: Instagram, href: config.social.instagram, label: 'Instagram' },
+              ].filter(item => !!item.href).map(({ Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="p-2 bg-white/15 hover:bg-white/25 rounded-lg text-sky-100 hover:text-white transition-all duration-200"
                 >
