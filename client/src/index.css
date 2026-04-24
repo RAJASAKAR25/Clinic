@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-navy: #114b70;
+  --brand-blue: #2078b5;
+  --brand-sky: #dff4ff;
+  --brand-cream: #fbf9f3;
+  --brand-gold: #dbac4d;
+  --ink: #1f3340;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Motion primitives ───────────────────────────────────────────────────── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes aurora-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shine-sweep {
+  from {
+    transform: translateX(-140%) skewX(-14deg);
+  }
+  to {
+    transform: translateX(240%) skewX(-14deg);
+  }
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    color: var(--ink);
+    @apply antialiased;
+    background:
+      radial-gradient(circle at 8% 10%, rgba(32, 120, 181, 0.08), transparent 36%),
+      radial-gradient(circle at 88% 18%, rgba(219, 172, 77, 0.08), transparent 34%),
+      linear-gradient(to bottom, #ffffff 0%, var(--brand-cream) 100%);
+    animation: fade-up 0.55s var(--motion-ease);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', 'Manrope', sans-serif;
+    @apply font-semibold leading-tight;
+  }
+
+  ::selection {
+    @apply bg-sky-200 text-sky-900;
+  }
+}
+
+/* ── Reusable component classes ───────────────────────────────────────────── */
+@layer components {
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+        px-6 py-3 rounded-full
+        text-white font-semibold text-sm
+        active:scale-95
+        shadow-md hover:shadow-lg
+        transition-all duration-200
+        focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2;
+      background: linear-gradient(135deg, var(--brand-navy), var(--brand-blue));
+      background-size: 180% 180%;
+      position: relative;
+      overflow: hidden;
+  }
+
+  .btn-primary:hover {
+    animation: aurora-shift 3s ease infinite;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 42%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .btn-primary:hover::after {
+    opacity: 1;
+    animation: shine-sweep 0.8s ease;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+        px-6 py-3 rounded-full
+        bg-white text-sky-700 font-semibold text-sm
+        border-2 border-sky-700
+        hover:bg-sky-50 active:scale-95
+           transition-all duration-200
+        focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2;
+  }
+
+  .btn-white {
+    @apply inline-flex items-center justify-center gap-2
+        px-6 py-3 rounded-full
+        bg-white text-sky-800 font-semibold text-sm
+        hover:bg-sky-50 active:scale-95
+           transition-all duration-200
+        focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-sky-700 focus:ring-offset-2;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center gap-2
+        px-6 py-3 rounded-full
+           bg-transparent text-white font-semibold text-sm
+           border-2 border-white/70
+           hover:bg-white/10 active:scale-95
+           transition-all duration-200;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white rounded-3xl shadow-card p-6
+           hover:shadow-lg transition-all duration-300;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Section typography */
+  .section-title {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800;
+  }
+
+  .section-subtitle {
+    @apply text-base md:text-lg text-slate-500 mt-3 leading-relaxed;
+  }
+
+  /* Page header band */
+  .page-header {
+    @apply relative
+           text-white pt-24 sm:pt-32 pb-14 sm:pb-20 text-center overflow-hidden;
+    background:
+      radial-gradient(circle at 85% -10%, rgba(255, 255, 255, 0.2), transparent 34%),
+      linear-gradient(135deg, var(--brand-navy), var(--brand-blue));
+  }
+
+  /* Form elements */
+  .input-field {
+      @apply w-full px-4 py-3 rounded-2xl
+        border border-slate-200 bg-white/95
+           text-slate-800 placeholder-slate-400 text-sm
+        focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent
+           transition duration-200;
+  }
+
+  .input-field-error {
+    @apply border-red-400 focus:ring-red-400;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-slate-700 mb-1.5;
+  }
+
+  .form-error {
+    @apply text-xs text-red-500 mt-1;
+  }
+
+  /* Status badges */
+  .badge-pending   { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800; }
+  .badge-confirmed { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800; }
+  .badge-cancelled { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800; }
+  .badge-completed { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800; }
+
+  .float-soft {
+    animation: soft-float 6s ease-in-out infinite;
+  }
+
+  .page-entrance {
+    animation: fade-up 0.45s var(--motion-ease);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Custom scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #f1f5f9; }
+::-webkit-scrollbar-thumb  { background: #7bb5d8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2078b5; }
+
+/* ── Billing Print Layout ─────────────────────────────────────────────────── */
+.billing-a4 {
+  width: 210mm;
+  min-height: 297mm;
+  box-sizing: border-box;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  .billing-a4 {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+    box-shadow: none !important;
+    border: none !important;
+    page-break-after: auto;
+  }
+
+  .bill-footer-strip {
+    border: 1px solid #0f4f74;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+}
