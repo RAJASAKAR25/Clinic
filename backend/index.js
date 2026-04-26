@@ -68,10 +68,8 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', environment: NODE_ENV, timestamp: new Date().toISOString() });
 });
 
-// ── Serve React Frontend in Production (only when running as standalone server) ──
-// On Vercel, static files are served by Vercel's CDN; this block is only
-// needed when you run `node backend/index.js` as an all-in-one server.
-if (NODE_ENV === 'production' && require.main === module) {
+// ── Serve React Frontend in Production ───────────────────────────────────────
+if (NODE_ENV === 'production') {
   const clientDist = path.join(__dirname, '../frontend/dist');
   app.use(express.static(clientDist));
   // All non-API routes return the React app (enables client-side routing)
@@ -83,28 +81,21 @@ if (NODE_ENV === 'production' && require.main === module) {
 // ── Global Error Handler (must be last middleware) ────────────────────────────
 app.use(require('./middleware/errorHandler'));
 
-// ── Start Server (only when run directly, not when imported by Vercel) ────────
-if (require.main === module) {
-  const startServer = async () => {
-    await connectDB();
-    app.listen(PORT, () => {
-      console.log('\n🦷  Shekar\'s Dental Clinic API');
-      console.log(`    Mode : ${NODE_ENV}`);
-      console.log(`    Port : ${PORT}`);
-      console.log(`    URL  : http://localhost:${PORT}`);
-      console.log(`    CORS : ${config.cors.allowedOrigins.join(', ')}\n`);
-    });
-  };
+// ── Start Server ──────────────────────────────────────────────────────────────
+const startServer = async () => {
+  await connectDB();
+  app.listen(PORT, () => {
+    console.log('\n🦷  Shekar\'s Dental Clinic API');
+    console.log(`    Mode : ${NODE_ENV}`);
+    console.log(`    Port : ${PORT}`);
+    console.log(`    URL  : http://localhost:${PORT}`);
+    console.log(`    CORS : ${config.cors.allowedOrigins.join(', ')}\n`);
+  });
+};
 
-  startServer().catch((error) => {
-    console.error('[startup] Failed to boot server:', error.message);
-    process.exit(1);
-  });
-} else {
-  // Running as a Vercel serverless function — connect to DB on first import
-  connectDB().catch((error) => {
-    console.error('[vercel] DB connection failed:', error.message);
-  });
-}
+startServer().catch((error) => {
+  console.error('[startup] Failed to boot server:', error.message);
+  process.exit(1);
+});
 
 module.exports = app;
