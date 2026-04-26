@@ -93,9 +93,14 @@ const startServer = async () => {
   });
 };
 
-startServer().catch((error) => {
-  console.error('[startup] Failed to boot server:', error.message);
-  process.exit(1);
-});
+if (!process.env.VERCEL) {
+  startServer().catch((error) => {
+    console.error('[startup] Failed to boot server:', error.message);
+    process.exit(1);
+  });
+} else {
+  // In Vercel serverless environment, connect to DB but don't bind to a port
+  connectDB().catch(console.error);
+}
 
 module.exports = app;
