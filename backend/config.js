@@ -5,7 +5,8 @@
  * Edit backend/.env to change anything — no code changes needed.
  */
 
-require('dotenv').config();
+require('dotenv').config();                               // base values
+require('dotenv').config({ path: '.env.local', override: true }); // local overrides
 
 const config = {
   // ── Server ──────────────────────────────────────────────────────────────────
