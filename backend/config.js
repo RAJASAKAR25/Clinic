@@ -12,6 +12,7 @@ const config = {
   // ── Server ──────────────────────────────────────────────────────────────────
   port:    parseInt(process.env.PORT, 10) || 5000,
   nodeEnv: process.env.NODE_ENV || 'development',
+  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:5173',
 
   // ── Database ───────────────────────────────────────────────────────────────
   db: {
@@ -25,6 +26,7 @@ const config = {
       .split(',')
       .map((o) => o.trim())
       .filter(Boolean)
+      .concat(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : [])
       .concat(
         // Always allow localhost dev/preview ports when no env var is set
         process.env.ALLOWED_ORIGINS
