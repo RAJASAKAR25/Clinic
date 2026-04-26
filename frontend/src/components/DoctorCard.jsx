@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Award, Clock, Star } from 'lucide-react';
 import { CLINIC } from '../utils/constants.js';
+import doctorImage from '../../assets/DR. Raja.webp';
 
 /**
  * DoctorCard — prominent doctor profile card used on Home & About pages.
@@ -14,8 +15,6 @@ const DoctorCard = ({ compact = false }) => {
     .map((w) => w[0])
     .join('')
     .toUpperCase();
-
-  const doctorImage = '/assets/DR. Raja.webp';
 
   return (
     <motion.div
