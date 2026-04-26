@@ -1,7 +1,7 @@
 {
-  "name": "smilecare-server",
+  "name": "shekars-dental-backend",
   "version": "1.0.0",
-  "description": "SmileCare Dental Clinic — Express REST API",
+  "description": "Shekar's Dental Clinic — Express REST API",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

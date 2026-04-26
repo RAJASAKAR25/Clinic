@@ -1,5 +1,5 @@
 /**
- * SmileCare Dental Clinic — Express API Server
+ * Shekar's Dental Clinic — Express API Server
  * Entry point: registers middleware, mounts routes, starts server
  */
 
@@ -70,7 +70,7 @@ app.get('/api/health', (_req, res) => {
 
 // ── Serve React Frontend in Production ───────────────────────────────────────
 if (NODE_ENV === 'production') {
-  const clientDist = path.join(__dirname, '../client/dist');
+  const clientDist = path.join(__dirname, '../frontend/dist');
   app.use(express.static(clientDist));
   // All non-API routes return the React app (enables client-side routing)
   app.get(/^(?!\/api).*/, (_req, res) => {
@@ -85,7 +85,7 @@ app.use(require('./middleware/errorHandler'));
 const startServer = async () => {
   await connectDB();
   app.listen(PORT, () => {
-    console.log('\n🦷  SmileCare Dental Clinic API');
+    console.log('\n🦷  Shekar\'s Dental Clinic API');
     console.log(`    Mode : ${NODE_ENV}`);
     console.log(`    Port : ${PORT}`);
     console.log(`    URL  : http://localhost:${PORT}`);

@@ -8,7 +8,7 @@ A production-ready dental clinic website built with **React + Vite** (frontend) 
 
 ```
 clinic/
-├── client/                  # React + Vite frontend
+├── frontend/                # React + Vite frontend
 │   ├── public/
 │   ├── src/
 │   │   ├── assets/
@@ -17,19 +17,21 @@ clinic/
 │   │   ├── layouts/         # Layout wrappers
 │   │   ├── services/        # Axios API service layer
 │   │   ├── hooks/           # Custom React hooks
-│   │   └── utils/           # Constants and helpers
+│   │   ├── utils/           # Constants and helpers
+│   │   └── constants.js     # App-wide constants (ES module)
 │   ├── tailwind.config.js
 │   ├── vite.config.js
 │   └── package.json
 │
-├── server/                  # Express.js REST API
+├── backend/                 # Express.js REST API
 │   ├── controllers/         # Route handler logic
 │   ├── routes/              # Express route definitions
 │   ├── middleware/          # Auth, validation, error handling
-│   ├── utils/               # File storage utilities
-│   └── data/                # JSON file storage (replaces DB)
+│   ├── utils/               # Utilities
+│   ├── db/                  # MongoDB connection
+│   ├── constants.js         # App-wide constants (CommonJS)
+│   └── package.json
 │
-├── shared/                  # Shared constants
 └── README.md
 ```
 
@@ -44,12 +46,12 @@ clinic/
 ### 1. Install dependencies
 
 ```bash
-# Install server dependencies
-cd server
+# Install backend dependencies
+cd backend
 npm install
 
-# Install client dependencies
-cd ../client
+# Install frontend dependencies
+cd ../frontend
 npm install
 ```
 
@@ -57,12 +59,12 @@ npm install
 
 ```bash
 # Backend
-cd server
+cd backend
 copy .env.example .env
-# Edit server/.env with your values
+# Edit backend/.env with your values
 
 # Frontend
-cd ../client
+cd ../frontend
 copy .env.example .env
 ```
 
@@ -70,11 +72,11 @@ copy .env.example .env
 
 ```bash
 # Terminal 1 — Start the backend server (port 5000)
-cd server
+cd backend
 npm run dev
 
 # Terminal 2 — Start the frontend dev server (port 5173)
-cd client
+cd frontend
 npm run dev
 ```
 
@@ -86,12 +88,12 @@ Open **http://localhost:5173** in your browser.
 
 ```bash
 # Build the frontend
-cd client
+cd frontend
 npm run build
-# Output goes to: client/dist/
+# Output goes to: frontend/dist/
 
 # Start production server (serves API + static frontend)
-cd ../server
+cd ../backend
 NODE_ENV=production npm start
 ```
 
@@ -132,7 +134,7 @@ The app uses JSON file storage which is designed to be easily swapped:
 
 1. **Install Mongoose**
    ```bash
-   cd server
+   cd backend
    npm install mongoose
    ```
 
@@ -141,9 +143,9 @@ The app uses JSON file storage which is designed to be easily swapped:
    MONGODB_URI=mongodb://localhost:27017/smilecare
    ```
 
-3. **Create Mongoose schemas** in `server/models/`:
+3. **Create Mongoose schemas** in `backend/models/`:
    ```js
-   // server/models/Appointment.js
+   // backend/models/Appointment.js
    const mongoose = require('mongoose');
    const AppointmentSchema = new mongoose.Schema({
      name: { type: String, required: true },
@@ -164,7 +166,7 @@ The app uses JSON file storage which is designed to be easily swapped:
    const appointments = await Appointment.find().sort({ createdAt: -1 });
    ```
 
-5. **Connect to MongoDB** in `server/index.js`:
+5. **Connect to MongoDB** in `backend/index.js`:
    ```js
    const mongoose = require('mongoose');
    mongoose.connect(process.env.MONGODB_URI);
@@ -194,7 +196,7 @@ The app uses JSON file storage which is designed to be easily swapped:
 
 ## 🔧 Environment Variables
 
-### `server/.env`
+### `backend/.env`
 ```env
 PORT=5000
 NODE_ENV=development
@@ -204,7 +206,7 @@ JWT_SECRET=change_this_to_a_long_random_string_in_production
 CLIENT_URL=http://localhost:5173
 ```
 
-### `client/.env`
+### `frontend/.env`
 ```env
 VITE_API_URL=/api
 ```

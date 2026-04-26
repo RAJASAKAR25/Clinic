@@ -1,8 +1,8 @@
 /**
- * server/config.js — Single source of truth for all backend configuration.
+ * backend/config.js — Single source of truth for all backend configuration.
  *
  * Every value is read from environment variables.
- * Edit server/.env to change anything — no code changes needed.
+ * Edit backend/.env to change anything — no code changes needed.
  */
 
 require('dotenv').config();
