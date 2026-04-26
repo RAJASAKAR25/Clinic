@@ -68,15 +68,11 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', environment: NODE_ENV, timestamp: new Date().toISOString() });
 });
 
-// ── Serve React Frontend in Production ───────────────────────────────────────
-if (NODE_ENV === 'production') {
-  const clientDist = path.join(__dirname, '../frontend/dist');
-  app.use(express.static(clientDist));
-  // All non-API routes return the React app (enables client-side routing)
-  app.get(/^(?!\/api).*/, (_req, res) => {
-    res.sendFile(path.join(clientDist, 'index.html'));
-  });
-}
+// ── Root Endpoint ─────────────────────────────────────────────────────────────
+// Provide a simple message at the root for easy verification
+app.get('/', (_req, res) => {
+  res.json({ message: "Welcome to Shekar's Dental Clinic API" });
+});
 
 // ── Global Error Handler (must be last middleware) ────────────────────────────
 app.use(require('./middleware/errorHandler'));
