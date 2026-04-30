@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Stethoscope } from 'lucide-react';
+import drKrishnaveniImg from '../../assets/Dr. Krishnaveni.webp';
+import drRamaSubbaReddyImg from '../../assets/Dr. Rama Subba Reddy.webp';
 
 const fadeUp = (delay = 0) => ({
   initial:     { opacity: 0, y: 30 },
@@ -21,6 +23,7 @@ const specialists = [
     qualification: 'MDS',
     specialty: 'Paedodontist (Child Dental Specialist)',
     color: 'from-teal-600 to-teal-400',
+    image: drRamaSubbaReddyImg,
   },
   {
     name: 'Dr. Suresh',
@@ -33,6 +36,7 @@ const specialists = [
     qualification: 'MDS',
     specialty: 'Oral & Maxillofacial Surgeon',
     color: 'from-violet-600 to-violet-400',
+    image: drKrishnaveniImg,
   },
   {
     name: 'Dr. Maheshwari',
@@ -70,7 +74,7 @@ const VisitingSpecialists = () => (
 
       {/* ── Specialist cards ───────────────────────────────────────────── */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {specialists.map(({ name, qualification, specialty, color }, i) => {
+        {specialists.map(({ name, qualification, specialty, color, image }, i) => {
           const initials = name
             .replace(/^Dr\.?\s+/i, '')
             .split(' ')
@@ -86,12 +90,20 @@ const VisitingSpecialists = () => (
               className="bg-white rounded-2xl shadow-card hover:shadow-medical transition-shadow p-6 flex flex-col items-center text-center"
             >
               {/* Avatar */}
-              <div
-                className={`w-16 h-16 rounded-full bg-gradient-to-br ${color} flex items-center justify-center text-white text-xl font-bold font-heading shadow-md mb-4`}
-                aria-hidden="true"
-              >
-                {initials}
-              </div>
+              {image ? (
+                <img
+                  src={image}
+                  alt={name}
+                  className="w-28 h-28 rounded-full object-cover object-top mx-auto shadow-md mb-4 bg-white border-4 border-white"
+                />
+              ) : (
+                <div
+                  className={`w-28 h-28 rounded-full mx-auto bg-gradient-to-br ${color} flex items-center justify-center text-white text-3xl font-bold font-heading shadow-md mb-4 border-4 border-white`}
+                  aria-hidden="true"
+                >
+                  {initials}
+                </div>
+              )}
 
               <h3 className="text-base font-bold text-slate-800 font-heading">{name}</h3>
               <p className="text-blue-600 text-xs font-semibold mt-0.5">{qualification}</p>

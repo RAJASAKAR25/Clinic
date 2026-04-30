@@ -4,6 +4,30 @@ import {
   Sparkles, ShieldCheck, Award, Layers, Scissors, Star,
 } from 'lucide-react';
 
+import imgGeneralDentistry from '../../assets/General Dentistry.webp';
+import imgRootCanal from '../../assets/Root Canal Treatments.webp';
+import imgToothExtraction from '../../assets/Tooth Extractions & Oral Surgery.webp';
+import imgDentalImplants from '../../assets/Dental Implants.webp';
+import imgToothReplacement from '../../assets/Tooth Replacement Solutions.webp';
+import imgCosmeticDentistry from '../../assets/Cosmetic Dentistry.webp';
+import imgBraces from '../../assets/Braces & Aligners.webp';
+import imgPediatric from '../../assets/Pediatric Dentistry.webp';
+import imgDiagnostics from '../../assets/Dental Diagnostics.webp';
+import imgEmergency from '../../assets/Emergency Dental Care.webp';
+
+const IMAGE_MAP = {
+  'General Dentistry': imgGeneralDentistry,
+  'Root Canal Treatments': imgRootCanal,
+  'Tooth Extractions & Oral Surgery': imgToothExtraction,
+  'Dental Implants': imgDentalImplants,
+  'Tooth Replacement Solutions': imgToothReplacement,
+  'Cosmetic Dentistry': imgCosmeticDentistry,
+  'Braces & Aligners': imgBraces,
+  'Pediatric Dentistry': imgPediatric,
+  'Dental Diagnostics': imgDiagnostics,
+  'Emergency Dental Care': imgEmergency,
+};
+
 // Map icon name string → Lucide component
 const ICON_MAP = {
   Sparkles,
@@ -48,12 +72,23 @@ const ServiceCard = ({ service, index = 0, detailed = false }) => {
     >
       {/* Decorative gradient dot */}
       <div
-        className={`absolute top-0 right-0 w-24 h-24 rounded-full ${theme.badge} opacity-5 -translate-y-6 translate-x-6`}
+        className={`absolute z-0 top-0 right-0 w-24 h-24 rounded-full ${theme.badge} opacity-5 -translate-y-6 translate-x-6`}
       />
 
-      <div className="p-6 flex flex-col flex-1">
+      {/* Service Image */}
+      {IMAGE_MAP[service.title] && (
+        <div className="relative z-10 w-full aspect-[4/3] overflow-hidden bg-white">
+          <img
+            src={IMAGE_MAP[service.title]}
+            alt={service.title}
+            className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+      )}
+
+      <div className="relative z-10 p-6 flex flex-col flex-1">
         {/* Icon */}
-        <div className={`inline-flex items-center justify-center w-12 h-12 ${theme.iconBg} rounded-xl mb-4`}>
+        <div className={`inline-flex items-center justify-center w-12 h-12 ${theme.iconBg} rounded-xl mb-4 relative ${IMAGE_MAP[service.title] ? '-mt-12 shadow-sm ring-4 ring-white' : ''}`}>
           <IconComp className={`w-6 h-6 ${theme.iconColor}`} aria-hidden="true" />
         </div>
 
