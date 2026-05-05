@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Home, Smile } from 'lucide-react';
+import SEOMeta from '../components/SEOMeta.jsx';
 
 const NotFound = () => (
   <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center px-4">
+    <SEOMeta title="Page Not Found" description="This page does not exist." robots="noindex, nofollow" />
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}

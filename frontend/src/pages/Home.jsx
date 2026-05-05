@@ -418,8 +418,9 @@ const Home = () => {
     <>
       <SEOMeta
         title="Home"
-        description="Shekar's Dental Clinic in Markapur, Andhra Pradesh — expert dental care by Dr. RajaSakar. Book your appointment online today."
+        description="Shekar's Dental Clinic in Markapur, Andhra Pradesh — expert dental care by Dr. Rajasakar. Teeth cleaning, root canal, implants & more. Book your appointment online today."
         canonical="/"
+        keywords="dental clinic Markapur, dentist Markapur, teeth cleaning, root canal Markapur, dental implants, Dr Rajasakar dentist, Shekar dental clinic, dentist Andhra Pradesh"
       />
 
       <Hero />

@@ -104,7 +104,7 @@ const BookAppointment = () => {
   if (isSuccess && bookedData) {
     return (
       <>
-        <SEOMeta title="Appointment Booked" description="Your appointment has been booked at Sekhar's Dental Clinic." canonical="/book-appointment" />
+        <SEOMeta title="Appointment Booked" description="Your appointment has been successfully booked at Shekar's Dental Clinic." canonical="/book-appointment" robots="noindex, nofollow" />
         <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -158,11 +158,7 @@ const BookAppointment = () => {
   /* ── Booking form ───────────────────────────────────────────────────────── */
   return (
     <>
-      <SEOMeta
-        title="Book Appointment"
-        description="Book a dental appointment online at Sekhar's Dental Clinic, Markapur, Andhra Pradesh. Choose your preferred date, time, and service."
-        canonical="/book-appointment"
-      />
+      <SEOMeta title="Book Appointment" description="Book a dental appointment online at Shekar's Dental Clinic, Markapur. Choose your preferred date, time, and service. Same-day confirmation." canonical="/book-appointment" keywords="book dental appointment Markapur, dental appointment online, dentist appointment Andhra Pradesh, Shekar dental booking" />
 
       {/* Header */}
       <header className="page-header" aria-label="Book appointment header">

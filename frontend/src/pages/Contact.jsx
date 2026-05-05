@@ -23,8 +23,9 @@ const Contact = () => {
     <>
       <SEOMeta
         title="Contact Us"
-        description="Contact Sekhar's Dental Clinic in Markapur, Andhra Pradesh. Call, email, or fill in the form and we will get back to you promptly."
+        description="Contact Shekar's Dental Clinic in Markapur, Andhra Pradesh. Call +91 7842299457, email us, or fill the form. Located at Nehru Bazar, opp. Uday Satvision."
         canonical="/contact"
+        keywords="contact dental clinic Markapur, dentist phone number Markapur, Shekar dental clinic address, dental clinic Nehru Bazar Markapur"
       />
 
       {/* Header */}

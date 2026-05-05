@@ -42,8 +42,9 @@ const About = () => (
   <>
     <SEOMeta
       title="About Us"
-      description="Learn about Sekhar's Dental Clinic and Dr. Rajasakar — BDS | Dental Surgeon — providing expert dental care in Markapur, Andhra Pradesh."
+      description="Meet Dr. Rajasakar — BDS Dental Surgeon with 16+ years of experience at Shekar's Dental Clinic, Markapur, Andhra Pradesh. Patient-first care, honest advice, and modern facilities."
       canonical="/about"
+      keywords="about Shekar dental clinic, Dr Rajasakar dentist, dental surgeon Markapur, BDS dentist Andhra Pradesh, dentist experience Markapur"
     />
 
     {/* Page header */}

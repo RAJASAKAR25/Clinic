@@ -21,8 +21,9 @@ const Services = () => {
     <>
       <SEOMeta
         title="Our Services"
-        description="Explore all dental services at Sekhar's Dental Clinic — teeth cleaning, root canal, implants, whitening, braces and more in Markapur, Andhra Pradesh."
+        description="Explore all dental services at Shekar's Dental Clinic, Markapur — teeth cleaning, root canal, dental implants, crowns, braces, whitening & more. Affordable care in Andhra Pradesh."
         canonical="/services"
+        keywords="dental services Markapur, root canal treatment, dental implants Markapur, teeth whitening, crowns and bridges, braces Markapur, teeth cleaning Andhra Pradesh, dental checkup"
       />
 
       {/* Page header */}
