@@ -5,10 +5,10 @@ import drKrishnaveniImg from '../../assets/Dr. Krishnaveni.webp';
 import drRamaSubbaReddyImg from '../../assets/Dr. Rama Subba Reddy.webp';
 
 const fadeUp = (delay = 0) => ({
-  initial:     { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport:    { once: true },
-  transition:  { duration: 0.6, delay },
+  viewport: { once: true },
+  transition: { duration: 0.6, delay },
 });
 
 const specialists = [
@@ -20,8 +20,13 @@ const specialists = [
   },
   {
     name: 'Dr. Rama Subba Reddy',
-    qualification: 'MDS',
+    qualification: 'MDS, Dip MH, Dip MAP, MA (Psychology), FMERU (USA), FMERC(IND)',
     specialty: 'Paedodontist (Child Dental Specialist)',
+    roles: [
+      'Former Head of Pediatric & Preventive Dentistry',
+      'Hedgewar Dental College',
+      'Karpaga Vinayaga Dental College',
+    ],
     color: 'from-teal-600 to-teal-400',
     image: drRamaSubbaReddyImg,
   },
@@ -74,7 +79,7 @@ const VisitingSpecialists = () => (
 
       {/* ── Specialist cards ───────────────────────────────────────────── */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {specialists.map(({ name, qualification, specialty, color, image }, i) => {
+        {specialists.map(({ name, qualification, specialty, roles, color, image }, i) => {
           const initials = name
             .replace(/^Dr\.?\s+/i, '')
             .split(' ')
@@ -87,7 +92,7 @@ const VisitingSpecialists = () => (
             <motion.div
               key={name}
               {...fadeUp(i * 0.09)}
-              className="bg-white rounded-2xl shadow-card hover:shadow-medical transition-shadow p-6 flex flex-col items-center text-center"
+              className="bg-white rounded-2xl shadow-card hover:shadow-medical transition-shadow p-6 flex flex-col items-center text-center h-full"
             >
               {/* Avatar */}
               {image ? (
@@ -108,6 +113,13 @@ const VisitingSpecialists = () => (
               <h3 className="text-base font-bold text-slate-800 font-heading">{name}</h3>
               <p className="text-blue-600 text-xs font-semibold mt-0.5">{qualification}</p>
               <p className="text-sm text-slate-500 mt-2 leading-relaxed">{specialty}</p>
+              {roles && (
+                <div className="mt-3 text-xs text-slate-400 space-y-0.5">
+                  {roles.map((role, idx) => (
+                    <p key={idx}>{role}</p>
+                  ))}
+                </div>
+              )}
             </motion.div>
           );
         })}

@@ -19,18 +19,18 @@ const config = {
 
   // ── Clinic Information ──────────────────────────────────────────────────────
   clinic: {
-    name:          import.meta.env.VITE_CLINIC_NAME          || 'Shekar’s Dental Clinic',
-    doctor:        import.meta.env.VITE_CLINIC_DOCTOR        || 'Dr. Rajasakar',
+    name: import.meta.env.VITE_CLINIC_NAME || 'Shekar’s Dental Clinic',
+    doctor: import.meta.env.VITE_CLINIC_DOCTOR || 'Dr. Rajasakar',
     qualification: import.meta.env.VITE_CLINIC_QUALIFICATION || 'BDS | Dental Surgeon',
-    experience:    import.meta.env.VITE_CLINIC_EXPERIENCE    || '16+ Years',
-    address:       import.meta.env.VITE_CLINIC_ADDRESS       || 'Nehru Bazar, opp. Uday Satvision, Markapur, Andhra Pradesh 523316',
-    city:          import.meta.env.VITE_CLINIC_CITY          || 'Markapur, Andhra Pradesh',
-    phone:         import.meta.env.VITE_CLINIC_PHONE         || '+91 7842299457',
-    whatsapp:      import.meta.env.VITE_CLINIC_WHATSAPP      || '7842299457',
-    email:         import.meta.env.VITE_CLINIC_EMAIL         || 'Cox_408@yahoo.co.in',
+    experience: import.meta.env.VITE_CLINIC_EXPERIENCE || '16+ Years',
+    address: import.meta.env.VITE_CLINIC_ADDRESS || 'Nehru Bazar, opp. Uday Satvision, Markapur, Andhra Pradesh 523316',
+    city: import.meta.env.VITE_CLINIC_CITY || 'Markapur, Andhra Pradesh',
+    phone: import.meta.env.VITE_CLINIC_PHONE || '+91 7842299457',
+    whatsapp: import.meta.env.VITE_CLINIC_WHATSAPP || '7842299457',
+    email: import.meta.env.VITE_CLINIC_EMAIL || 'Cox_408@yahoo.co.in',
     hours: {
-      weekdays: import.meta.env.VITE_CLINIC_HOURS_WEEKDAYS || 'Mon – Sat: 9:00 AM – 9:00 PM',
-      sunday:   import.meta.env.VITE_CLINIC_HOURS_SUNDAY   || 'Sunday: 9:00 AM – 1:30 PM',
+      weekdays: import.meta.env.VITE_CLINIC_HOURS_WEEKDAYS || 'Mon – Sat: 9:00 AM – 8:30 PM',
+      sunday: import.meta.env.VITE_CLINIC_HOURS_SUNDAY || 'Sunday: 9:00 AM – 1:30 PM',
     },
     // Google Maps embed src URL — get this from Google Maps → Share → Embed
     mapEmbed: import.meta.env.VITE_CLINIC_MAP_EMBED ||
@@ -46,9 +46,9 @@ const config = {
   // ── Social Media Links ──────────────────────────────────────────────────────
   // Leave empty string to hide the icon in the footer
   social: {
-    facebook:  import.meta.env.VITE_SOCIAL_FACEBOOK  || '',
+    facebook: import.meta.env.VITE_SOCIAL_FACEBOOK || '',
     instagram: import.meta.env.VITE_SOCIAL_INSTAGRAM || '',
-    twitter:   import.meta.env.VITE_SOCIAL_TWITTER   || '',
+    twitter: import.meta.env.VITE_SOCIAL_TWITTER || '',
   },
 };
 

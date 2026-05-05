@@ -11,7 +11,7 @@ const CLINIC_INFO = {
   whatsapp: '917842299457',
   email: 'Cox_408@yahoo.co.in',
   hours: {
-    weekdays: 'Mon–Sat: 9:00 AM – 7:00 PM',
+    weekdays: 'Mon–Sat: 9:00 AM – 8:30 PM',
     sunday: 'Sunday: 9:00 AM – 1:30 PM',
   },
 };

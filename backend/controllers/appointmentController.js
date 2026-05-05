@@ -75,7 +75,7 @@ const createAppointment = async (req, res, next) => {
         success: false,
         message: dayOfWeek === 0
           ? 'Sunday appointments are available from 9:00 AM to 1:30 PM.'
-          : 'Appointments are available from 9:00 AM to 9:00 PM Monday through Saturday.',
+          : 'Appointments are available from 9:00 AM to 8:30 PM Monday through Saturday.',
       });
     }
 
@@ -106,15 +106,15 @@ const createAppointment = async (req, res, next) => {
     }
 
     const appointment = {
-      id:        uuidv4(),
-      name:      name.trim(),
-      phone:     phone.trim(),
-      email:     email?.trim().toLowerCase() || null,
-      date:      normalizedDate,
-      time:      normalizedTime,
+      id: uuidv4(),
+      name: name.trim(),
+      phone: phone.trim(),
+      email: email?.trim().toLowerCase() || null,
+      date: normalizedDate,
+      time: normalizedTime,
       service,
-      message:   message?.trim() || null,
-      status:    'pending', // pending | confirmed | cancelled | completed
+      message: message?.trim() || null,
+      status: 'pending', // pending | confirmed | cancelled | completed
       createdAt: new Date().toISOString(),
     };
 
@@ -124,12 +124,12 @@ const createAppointment = async (req, res, next) => {
       success: true,
       message: 'Appointment booked successfully! We will contact you shortly to confirm.',
       data: {
-        id:      appointment.id,
-        name:    appointment.name,
-        date:    appointment.date,
-        time:    appointment.time,
+        id: appointment.id,
+        name: appointment.name,
+        date: appointment.date,
+        time: appointment.time,
         service: appointment.service,
-        status:  appointment.status,
+        status: appointment.status,
       },
     });
   } catch (error) {

@@ -64,7 +64,7 @@ const DoctorCard = ({ compact = false }) => {
         <div className="grid grid-cols-3 gap-3 mt-5">
           {[
             { Icon: Clock, value: CLINIC.experience, label: 'Experience' },
-            { Icon: Award, value: '2000+', label: 'Patients' },
+            { Icon: Award, value: '20000+', label: 'Patients' },
             { Icon: GraduationCap, value: 'BDS', label: 'Dental Surgeon' },
           ].map(({ Icon, value, label }) => (
             <div key={label} className="bg-sky-50 rounded-xl p-3 text-center">

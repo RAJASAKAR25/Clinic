@@ -222,7 +222,7 @@ const WhyChooseUs = () => {
     { Icon: Shield, title: 'Safe & Sterile', desc: 'Hospital-grade sterilisation for every procedure. Your safety is our commitment.' },
     { Icon: Smile, title: 'Painless Treatments', desc: 'Modern anaesthesia and advanced techniques ensure a comfortable, stress-free visit.' },
     { Icon: Star, title: 'Expert Doctor', desc: 'Dr. RajaSakar brings 10+ years of clinical expertise to every consultation.' },
-    { Icon: Clock, title: 'Convenient Hours', desc: 'Open Monday to Saturday from 9:00 AM to 9:00 PM and Sunday from 9:00 AM to 1:30 PM.' },
+    { Icon: Clock, title: 'Convenient Hours', desc: 'Open Monday to Saturday from 9:00 AM to 8:30 PM and Sunday from 9:00 AM to 1:30 PM.' },
   ];
 
   return (
